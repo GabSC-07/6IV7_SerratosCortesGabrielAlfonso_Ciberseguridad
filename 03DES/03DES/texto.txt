@@ -1,0 +1,3 @@
+La apertura del fichero y su posterior lectura pueden lanzar excepciones que debemos capturar. Por ello, la apertura del fichero y la lectura debe meterse en un bloque try-catch.
+
+Además, el fichero hay que cerrarlo cuando terminemos con él, tanto si todo ha ido bien como si ha habido algún error en la lectura después de haberlo abierto. Por ello, se suele usar try-with-resources. En esta estructura, detrás de try, entre paréntesis, se abre el fichero y se almacena en una variable. Si
