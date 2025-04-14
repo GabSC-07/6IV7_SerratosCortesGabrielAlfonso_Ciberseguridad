@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cifrado AES</title>
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="icon.png" type="image/x-icon">
+    </head>
+
+    <header>
+        <h1>Cifrado y Descifrado AES</h1>
+    </header>
+
+    <body>
+        <div class="main">
+            <p>Elige una opción:</p>
+            <!-- Cifrado -->
+            <div class="cifrar">
+                <h3>Cifrar</h3>
+
+                <div>
+                    <label>Mensaje:</label>
+                    <br>
+                    <textarea id="encryptText" required></textarea>
+                </div>
+                <br><br>
+                <div>
+                    <label>Clave:</label>
+                    <br>
+                    <input type="password" id="encryptKey" class="clave" required>
+                </div>
+                <br><br>
+                <center><button onclick="encryptMessage()" class="btn_cifrar">Cifrar Mensaje</button></center>
+                <br><br>
+            </div>
+
+            <!-- Descifrado -->
+            <div class="descifrar">
+                <h3>Descifrar</h3>
+
+                <form id="decryptForm">
+                    <div>
+                        <label>Archivo cifrado:</label>
+                        <br>
+                        <input type="file" name="file" id="decryptFile" accept=".txt" class="archivo" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label>Clave:</label>
+                        <br>
+                        <input type="password" id="decryptKey" class="clave" required>
+                    </div>
+                    <br>
+                    <center><button type="submit" class="btn_descifrar">Descifrar Mensaje</button></center>
+                </form>
+
+                <div id="decryptedResult">
+                    <label class="lbl_mensaje">Mensaje Descifrado:</label>
+                    <textarea rows="6" readonly></textarea>
+                    <br><br><br><br>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
