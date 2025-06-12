@@ -1,0 +1,73 @@
+header {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    background-color: rgb(65, 66, 139);
+    width: 100vw;
+    padding-top: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25PX;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    background-color: #e0f7fa;
+        text-align: center;
+}
+
+.container {
+    background: white;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px #aaa;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    text-align: center;
+}
+
+.links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.inicio {
+    font-family: Arial;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding-top: 50px;
+}
+
+form {
+    background: white;
+    display: inline-block;
+     text-align: center;
+    padding-top: 50px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #aaa;
+    margin-top: 20px;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+}
