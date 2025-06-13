@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <style>
+        body{background-color: rgb(219, 255, 240);}
+    </style>
+</head>
+
+<header>
+    <h1>¡Bienvenido!</h1>
+</header>
+
+<body>
+    <h2>Iniciar Sesión</h2>
+    <form action="" id="loginform">
+        <input type="email" id="email" name="email" placeholder="Correo">
+        <input type="password" id="password" name="password" placeholder="Contraseña">
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <p>¿No tienes cuenta? Da clic <a href="./register.html"> aqui </a></p>
+    
+    <script>
+        document.getElementById('loginform').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Variables
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch('http://localhost:3000/api/auth/login' , {
+                    // Los encabezados de la respuesta
+                    method : 'POST',
+                    headers : {'Content-Type' : 'application/json'},
+                    body : JSON.stringify({email, password})
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    alert('Bienvenido')
+                    localStorage.setItem('token', data.token);
+                } else {
+                    alert(data.err || 'Error desconocido');
+                }
+            } catch (err) {
+                console.log('Error en la petición del login', err)
+                alert('Error en la red o el servicio')
+            }
+        })
+    </script>
+</body>
+
+</html>

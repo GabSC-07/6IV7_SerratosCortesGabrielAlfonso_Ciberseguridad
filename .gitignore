@@ -1,4 +1,12 @@
 /03DES/03DES/nbproject/private/
 /03DES/03DES/build/
 /04AES/nbproject/private/
-/04AES/build/
+/04AES/build
+
+#node modules
+node_modules/
+
+#logs
+npm-debug.log*
+
+.env

@@ -2,7 +2,7 @@ header {
     text-align: center;
     color: white;
     font-size: 30px;
-    background-color: rgb(65, 66, 139);
+    background-color: rgb(59, 77, 156);
     width: 100vw;
     padding-top: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -16,14 +16,14 @@ body {
     padding: 0;
     font-family: Arial;
     background-color: #e0f7fa;
-        text-align: center;
+    text-align: center;
 }
 
 .container {
     background: white;
     max-width: 600px;
     margin: auto;
-    padding: 20px;
+    padding: 40px;
     border-radius: 8px;
     margin-top: 50px;
     box-shadow: 0 0 10px #aaa;
@@ -33,6 +33,11 @@ h1 {
     text-align: center;
 }
 
+h2{
+    margin-top: 50px;
+    font-size: 35px;
+}
+
 p {
     font-size: 18px;
     text-align: center;
@@ -40,7 +45,9 @@ p {
 
 .links {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    font-size: x-large;
+    margin-bottom: 40px;
 }
 
 .inicio {
@@ -53,21 +60,51 @@ p {
 form {
     background: white;
     display: inline-block;
-     text-align: center;
+    text-align: center;
     padding-top: 50px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px #aaa;
+    flex-direction: column;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 input {
     display: block;
-    margin: 10px auto;
-    padding: 8px;
+    margin: 25px auto;
+    padding: 15px;
     width: 200px;
+    border: 1px solid #ad9ebc;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #f7f2f9;
+    transition: border 0.2s;
 }
 
-button {
-    padding: 10px 20px;
+button[type="submit"] {
+    margin: 10px auto;
+    background: #4dac75;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 17px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #1c7a5b;
+}
+
+a {
+    color: #c2467a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
 }

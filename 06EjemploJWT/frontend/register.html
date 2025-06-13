@@ -1,117 +1,66 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Registro</title>
-  <style>
-    body {
-      font-family: Arial;
-      background-color: #fce4ec;
-      padding: 40px;
-    }
-    form {
-      background: white;
-      max-width: 400px;
-      margin: auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #aaa;
-    }
-    h2 {
-      text-align: center;
-    }
-    label, input {
-      display: block;
-      width: 100%;
-      margin-bottom: 10px;
-    }
-    input {
-      padding: 8px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #ec407a;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    .links {
-      text-align: center;
-      margin-top: 15px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <style>
+        body{background-color: rgb(236, 255, 219);}
+    </style>
 </head>
+
 <body>
-  <form id="registroForm" onsubmit="return validarFormulario()">
-    <h2>Registro de Usuario</h2>
+    <h2>Formulario de Registro</h2>
+    <form action="" id="registerform">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <input type="text" id="nombre_2" name="nombre_2" placeholder="Segundo nombre (opcional)">
+        <input type="text" id="app_paterno" name="app_paterno" placeholder="Apellido Paterno">
+        <input type="text" id="app_materno" name="app_materno" placeholder="Apellido Materno">
+        <input type="email" id="email" name="email" placeholder="Correo">
+        <input type="password" id="password" name="password" placeholder="Ingresa la Contraseña">
+        <input type="password" id="confirm_pwd" name="confirm_pwd" placeholder="Confirma la Contraseña">
+        <button type="submit">Registrarse</button>
+    </form>
 
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
+    <p>¿Ya tienes cuenta? Da clic <a href="./login.html"> aqui </a></p>
 
-    <label for="segundoNombre">Segundo Nombre:</label>
-    <input type="text" id="segundoNombre" name="segundoNombre">
+    <script>
+        document.getElementById('registerform').addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-    <label for="apellidoPaterno">Apellido Paterno:</label>
-    <input type="text" id="apellidoPaterno" name="apellidoPaterno" required>
+            // Variables
+            const nombre = document.getElementById('nombre').value;
+            const nombre_2 = document.getElementById('nombre_2').value;
+            const app_materno = document.getElementById('app_materno').value;
+            const app_paterno = document.getElementById('app_paterno').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirm_pwd = document.getElementById('confirm_pwd').value;
 
-    <label for="apellidoMaterno">Apellido Materno:</label>
-    <input type="text" id="apellidoMaterno" name="apellidoMaterno">
+            try {
+                const res = await fetch('http://localhost:3000/api/auth/register' , {
+                    // Los encabezados de la respuesta
+                    method : 'POST',
+                    headers : {'Content-Type' : 'application/json'},
+                    body : JSON.stringify({nombre, nombre_2, app_paterno, app_materno, email, password, confirm_pwd})
+                });
 
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required>
-
-    <label for="confirmarPassword">Confirmar Contraseña:</label>
-    <input type="password" id="confirmarPassword" name="confirmarPassword" required>
-
-    <button type="submit">Registrarse</button>
-
-    <div class="links">
-      <a href="Bienvenida.html">Iniciar Sesión</a>
-    </div>
-  </form>
-
-  <script>
-    function soloLetras(texto) {
-      return /^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/.test(texto);
-    }
-
-    function validarFormulario() {
-      const nombre = document.getElementById("nombre").value.trim();
-      const segundoNombre = document.getElementById("segundoNombre").value.trim();
-      const apellidoPaterno = document.getElementById("apellidoPaterno").value.trim();
-      const apellidoMaterno = document.getElementById("apellidoMaterno").value.trim();
-      const password = document.getElementById("password").value;
-      const confirmarPassword = document.getElementById("confirmarPassword").value;
-
-      if (!soloLetras(nombre)) {
-        alert("El nombre solo debe contener letras.");
-        return false;
-      }
-
-      if (segundoNombre !== "" && !soloLetras(segundoNombre)) {
-        alert("El segundo nombre solo debe contener letras.");
-        return false;
-      }
-
-      if (!soloLetras(apellidoPaterno)) {
-        alert("El apellido paterno solo debe contener letras.");
-        return false;
-      }
-
-      if (apellidoMaterno !== "" && !soloLetras(apellidoMaterno)) {
-        alert("El apellido materno solo debe contener letras.");
-        return false;
-      }
-
-      if (password !== confirmarPassword) {
-        alert("Las contraseñas no coinciden.");
-        return false;
-      }
-
-      alert("¡Registro exitoso!");
-      return true;
-    }
-  </script>
+                const data = await res.json();
+                if (res.ok) {
+                    alert(data.message || 'Usuario Registrado');
+                    window.location.href = 'index.html';
+                } else {
+                    alert(data.error || 'Error al registrar');
+                }
+            } catch (err) {
+                console.log('Error en la petición del registro', err)
+                alert('Error en la red o el servicio')
+            }
+        });
+    </script>
 </body>
+
 </html>
